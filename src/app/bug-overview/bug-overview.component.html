@@ -1,0 +1,45 @@
+<h3 class="title">Bugs Overview</h3>
+
+<div id="action-items">
+    <button mat-raised-button color="accent">
+        <mat-icon>create</mat-icon>
+        Create
+    </button>
+</div>
+
+<table mat-table [dataSource]="data" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columns.title}}</th>
+        <td mat-cell *matCellDef="let bug">{{bug.title}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columns.priority}}</th>
+        <td mat-cell *matCellDef="let bug">{{bug.priority}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="reporter">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columns.reporter}}</th>
+        <td mat-cell *matCellDef="let bug">{{bug.reporter}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columns.created}}</th>
+        <td mat-cell *matCellDef="let bug">{{bug.created | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columns.status}}</th>
+        <td mat-cell *matCellDef="let bug">{{bug.status}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{columns.actions}}</th>
+        <td mat-cell *matCellDef="let bug">
+            <button color="accent" mat-icon-button><mat-icon>create</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns | keys"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns | keys"></tr>
+</table>
