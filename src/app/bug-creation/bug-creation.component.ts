@@ -54,7 +54,9 @@ export class BugCreationComponent {
     new SelectOption<string, string>('rejected', 'Rejected'),
   ];
 
-  constructor(private bugService: BugServiceService) {}
+  constructor(private bugService: BugServiceService) {
+
+  }
 
   ngOnInit(): void {
     this.bugForm = new FormGroup({
@@ -69,6 +71,14 @@ export class BugCreationComponent {
       priority: new FormControl(null, []),
       reporter: new FormControl(null, []),
       status: new FormControl(null, []),
+    });
+    this.bugForm.get('reporter')?.valueChanges.subscribe(val => {
+      if (val === 'qa') {
+        this.bugForm.controls['status'].setValidators([Validators.required]);
+      } else {
+        this.bugForm.controls['status'].clearValidators();
+        this.bugForm.controls['status'].markAsUntouched();
+      }
     });
   }
 
@@ -85,4 +95,6 @@ export class BugCreationComponent {
     );
     this.bugService.submitBug(bug).subscribe((r) => console.log(r));
   }
+
+
 }
