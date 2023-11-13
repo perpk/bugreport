@@ -1,1 +1,50 @@
-<p>bug-creation works!</p>
+<form (ngSubmit)="submitBug()" [formGroup]="bugForm">
+    <ul class="button-list">
+        <li>
+            <button mat-raised-button color="primary">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+        </li>
+        <li>
+            <button mat-raised-button color="primary">
+                <mat-icon>
+                    cancel
+                </mat-icon>
+                Abort
+            </button>
+        </li>
+    </ul>
+    <mat-form-field class="form-field">
+        <mat-label>Title</mat-label>
+        <input matInput required formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea  formControlName="description" matInput required></textarea>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Priority</mat-label>
+        <select matNativeControl required>
+            <option *ngFor="let item of priorities" value="{{item.getKey()}}">
+                {{item.getValue()}}
+            </option>
+        </select>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Reporter</mat-label>
+        <select matNativeControl required formControlName="reporter">
+            <option *ngFor="let item of reporters" value="{{item.getKey()}}">
+                {{item.getValue()}}
+            </option>
+        </select>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Status</mat-label>
+        <select matNativeControl formControlName="status">
+            <option *ngFor="let item of status" value="{{item.getKey()}}">
+                {{item.getValue()}}
+            </option>
+        </select>
+    </mat-form-field>
+</form>

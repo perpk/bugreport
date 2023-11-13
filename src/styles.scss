@@ -6,3 +6,13 @@ h1, h2, h3, p {
 .app-header {
     color: rgb(255, 64, 102);
 }
+.button-list {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.button-list li {
+    display: inline-block;
+    margin-right: 1rem;
+    
+}
