@@ -77,8 +77,8 @@ export class BugCreationComponent {
         this.bugForm.controls['status'].setValidators([Validators.required]);
       } else {
         this.bugForm.controls['status'].clearValidators();
-        this.bugForm.controls['status'].markAsUntouched();
       }
+      this.bugForm.controls['status'].updateValueAndValidity();
     });
   }
 
