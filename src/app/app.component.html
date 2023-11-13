@@ -1,5 +1,22 @@
 <div class="app-header">
     <h2>Bug Reporting System</h2>
     <hr />
+    <ul class="button-list">
+        <li>
+            <a type="button" mat-raised-button [routerLink]="['/create-edit-bug']" routerLinkActive="router-link-active"
+                color="accent">
+                <mat-icon>create</mat-icon>
+                Create
+            </a>
+        </li>
+        <li>
+            <a type="button" mat-raised-button [routerLink]="['/overview-bugs']" routerLinkActive="router-link-active"
+                color="accent">
+                <mat-icon>remove_red_eye</mat-icon>
+                Overview
+            </a>
+        </li>
+    </ul>
+
 </div>
-<app-bug-overview />
+<router-outlet />

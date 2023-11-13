@@ -2,10 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 import { KeysPipe } from '../pipes/keys.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-bug-overview',
@@ -16,7 +17,8 @@ import { KeysPipe } from '../pipes/keys.pipe';
     KeysPipe,
     MatSortModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './bug-overview.component.html',
   styleUrls: ['./bug-overview.component.scss'],
@@ -82,4 +84,5 @@ export class BugOverviewComponent {
   ngAfterViewInit() {
     this.data.sort = this.sort;
   }
+
 }
