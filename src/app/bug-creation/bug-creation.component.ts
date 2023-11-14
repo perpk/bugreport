@@ -9,7 +9,6 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { SelectOption } from '../common/SelectOption';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BugServiceService } from '../services/bug-service.service';
@@ -33,27 +32,6 @@ import { Bug } from '../common/Bug';
 export class BugCreationComponent {
   bugForm!: FormGroup;
 
-  priorities = [
-    new SelectOption<string, string>('', null),
-    new SelectOption<number, number>(0, 0),
-    new SelectOption<number, number>(1, 1),
-    new SelectOption<number, number>(2, 2),
-  ];
-
-  reporters = [
-    new SelectOption<string, string>('', null),
-    new SelectOption<string, string>('qa', 'QA'),
-    new SelectOption<string, string>('po', 'PO'),
-    new SelectOption<string, string>('dev', 'DEV'),
-  ];
-
-  status = [
-    new SelectOption<string, string>('', null),
-    new SelectOption<string, string>('forReview', 'For Review'),
-    new SelectOption<string, string>('done', 'Done'),
-    new SelectOption<string, string>('rejected', 'Rejected'),
-  ];
-
   constructor(private bugService: BugServiceService) {
 
   }
@@ -73,7 +51,7 @@ export class BugCreationComponent {
       status: new FormControl(null, []),
     });
     this.bugForm.get('reporter')?.valueChanges.subscribe(val => {
-      if (val === 'qa') {
+      if (val === 'QA') {
         this.bugForm.controls['status'].setValidators([Validators.required]);
       } else {
         this.bugForm.controls['status'].clearValidators();
@@ -96,5 +74,7 @@ export class BugCreationComponent {
     this.bugService.submitBug(bug).subscribe((r) => console.log(r));
   }
 
-
+  resetForm() {
+    this.bugForm.reset();
+  }
 }

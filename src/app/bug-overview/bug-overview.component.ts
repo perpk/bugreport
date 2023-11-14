@@ -31,8 +31,7 @@ export class BugOverviewComponent {
     priority: 'Priority',
     reporter: 'Reporter',
     created: 'Date Created',
-    status: 'Status',
-    actions: 'Edit',
+    status: 'Status'
   };
 
   @ViewChild(MatSort)
